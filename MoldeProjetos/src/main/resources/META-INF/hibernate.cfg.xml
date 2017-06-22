@@ -15,8 +15,7 @@
 		<property name="hibernate.format_sql">false</property>
 		<property name="hbm2ddl.auto">update</property>
 		
-		<!-- Livro -->
-		<!-- <mapping class="br.com.meuprojeto.bean.Livro" /> -->
+		
     
     
     </session-factory>
