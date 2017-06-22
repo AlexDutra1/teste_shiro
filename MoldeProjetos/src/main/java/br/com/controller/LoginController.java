@@ -60,11 +60,11 @@ public class LoginController implements Serializable{
         UsernamePasswordToken token = new UsernamePasswordToken(this.formulario.getUsuario().getNome(),
         		this.formulario.getUsuario().getSenha());
         
-        System.out.println("TESTEEE METODO AUTENTICAR");
         
         Subject currentUser = SecurityUtils.getSubject();
         try {
             currentUser.login(token);
+            
             //ctx.getExternalContext().redirect("secure/index.xhtml");
             ctx.getExternalContext().redirect("secure/index.jsp");
         } catch (AuthenticationException ae) {

@@ -1,5 +1,7 @@
 package br.com.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.shiro.authc.AuthenticationException;
@@ -9,6 +11,7 @@ import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.credential.SimpleCredentialsMatcher;
 import org.apache.shiro.realm.Realm;
 
+import br.com.modelo.Usuario;
 import br.com.servico.LoginService;
 
 public class MeuRealm implements Realm {
@@ -16,6 +19,9 @@ public class MeuRealm implements Realm {
 	@Inject
 	private LoginService service;
 	
+	
+	//primeiro você verifica se existe o usuário contido no Principal do seu token
+	//e retorna a credencial dele
 	@Override
 	public AuthenticationInfo getAuthenticationInfo(AuthenticationToken token)
 		    throws AuthenticationException {
@@ -24,12 +30,20 @@ public class MeuRealm implements Realm {
 		 
         //MeuDAO dao = new MeuDAO();
 		//String credencial = dao.buscarCredencial(principal);
+		
+		//String credencial="1";
  
-		//this.service.getUsuarioService().getNegocios().getDao().autenticar(this.formulario.getUsuario());
+		List <Usuario> listaDeCredenciais= this.service.getUsuarioService().getNegocios().getDao().buscarCredencial(principal);
 		
-		//this.service.getUsuarioService().getNegocios().getDao().consultarTodosUsuariosDAO()
+		for (Usuario usuario : listaDeCredenciais) {
+			
+			if(usuario.getSenha().equals("")){
+				
+				
+			}
+		}
+		String credencial="";
 		
-		String credencial="1";
 		
         if(credencial != null) {
              AuthenticationInfo info = new SimpleAuthenticationInfo(principal,credencial,getName());

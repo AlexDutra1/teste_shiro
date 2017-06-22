@@ -26,6 +26,15 @@ public class UsuarioDAO implements UsuarioGerenciable {
 		this.manager = manager;
 	}
 	
+	public List <Usuario> buscarCredencial(String senha){
+		
+		Query consulta=manager.createQuery("select a from Usuario a where senha='"
+				+senha
+				+"'", Usuario.class);
+		
+		return consulta.getResultList();
+	}
+	
 	public String autenticar(Usuario usuario){
 		
 		Query consulta=manager.createQuery("select a from Usuario a where usuario='"
@@ -99,28 +108,6 @@ public class UsuarioDAO implements UsuarioGerenciable {
 			System.out.println("TESTE EMAIL: "+usuario2.getEmail());
 		}
 		
-		//CRITERIA HIBERNATE-PARA IMPLEMENTAR
-				/*
-				SessionFactory sf = new Configuration().configure().buildSessionFactory();
-				Session session = sf.openSession();
-				Transaction tx = session.beginTransaction();
-				
-				Criteria criteria = session.createCriteria(Usuario.class);
-				if(usuario.getNome() != null){
-				criteria.add(Restrictions.eq("nome", usuario.getNome()));
-				}
-				if(usuario.getEmail() != null){
-				criteria.add(Restrictions.eq("idade", usuario.getEmail()));
-				}
-				
-				List<Usuario> list = criteria.list();
-				
-				for (Usuario usuario2 : list) {
-					System.out.println("LISTA GERADO PELOS CRITERIOS: "+usuario2.getNome());
-				}
-				
-				return list;
-				 */
 		
 		return list;
 	
