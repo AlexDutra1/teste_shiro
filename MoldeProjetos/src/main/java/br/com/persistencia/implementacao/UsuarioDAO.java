@@ -26,13 +26,13 @@ public class UsuarioDAO implements UsuarioGerenciable {
 		this.manager = manager;
 	}
 	
-	public List <Usuario> buscarCredencial(String senha){
+	public String buscarCredencial(String senha){
 		
 		Query consulta=manager.createQuery("select a from Usuario a where senha='"
 				+senha
 				+"'", Usuario.class);
 		
-		return consulta.getResultList();
+		return (String) consulta.getSingleResult();
 	}
 	
 	public String autenticar(Usuario usuario){

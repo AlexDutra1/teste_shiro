@@ -20,8 +20,7 @@ public class MeuRealm implements Realm {
 	private LoginService service;
 	
 	
-	//primeiro você verifica se existe o usuário contido no Principal do seu token
-	//e retorna a credencial dele
+	
 	@Override
 	public AuthenticationInfo getAuthenticationInfo(AuthenticationToken token)
 		    throws AuthenticationException {
@@ -31,18 +30,14 @@ public class MeuRealm implements Realm {
         //MeuDAO dao = new MeuDAO();
 		//String credencial = dao.buscarCredencial(principal);
 		
-		//String credencial="1";
- 
-		List <Usuario> listaDeCredenciais= this.service.getUsuarioService().getNegocios().getDao().buscarCredencial(principal);
+	
+		//Implementacao
+		/*
+		Primeiro você verifica se existe o usuário contido no Principal do seu token
+		e retorna a credencial dele
+		*/
 		
-		for (Usuario usuario : listaDeCredenciais) {
-			
-			if(usuario.getSenha().equals("")){
-				
-				
-			}
-		}
-		String credencial="";
+		String credencial=this.service.getUsuarioService().getNegocios().getDao().buscarCredencial(principal);
 		
 		
         if(credencial != null) {
@@ -68,13 +63,23 @@ public class MeuRealm implements Realm {
 	 
 	@Override
 	public boolean supports(AuthenticationToken token) {
-	   //valido o token 
+	   
+		//String credencial=this.service.getUsuarioService().getNegocios().getDao().buscarCredencial(principal);
+		/*
+		if(credencial.equals(token)){
+			return true;  
+		}else{
+			return false;
+		}
+		*/
+		//valido o token 
 	     //...
 	   //tudo ok com ele
-	    return true;  
+	    
 	   //problema com o token
 	    //return false;
-	 
+		
+	 return true;
 	}
 
 

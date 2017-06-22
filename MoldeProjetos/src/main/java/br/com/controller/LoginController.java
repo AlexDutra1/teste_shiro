@@ -30,28 +30,6 @@ public class LoginController implements Serializable{
 	@Inject
 	private LoginFormulario formulario;
 	
-	/*public String autenticar(){
-		
-		
-		 AUTENTICAO ESTATICA
-		System.out.println("Clicado");
-		System.out.println("Usuario: "+this.formulario.getUsuario().getUsuario());
-		System.out.println("Senha: "+this.formulario.getUsuario().getSenha());
-		
-		//Acessa o metodo de autenticacao do UsuarioDAO
-		String resultado=this.service.getUsuarioService().getNegocios().getDao().autenticar(this.formulario.getUsuario());
-
-		if(resultado.equals("autenticado")){
-			return "autenticacao_ok";
-		}else{
-			return "recusado";
-		}
-		
-		
-		return null;
-	}*/
-	
-	
 	public void autenticar() throws IOException {
 		
         FacesContext ctx = FacesContext.getCurrentInstance();
@@ -74,6 +52,28 @@ public class LoginController implements Serializable{
         }
  
     }
+	
+	
+	/*public String autenticar(){
+	
+	
+	 AUTENTICAO ESTATICA
+	System.out.println("Clicado");
+	System.out.println("Usuario: "+this.formulario.getUsuario().getUsuario());
+	System.out.println("Senha: "+this.formulario.getUsuario().getSenha());
+	
+	//Acessa o metodo de autenticacao do UsuarioDAO
+	String resultado=this.service.getUsuarioService().getNegocios().getDao().autenticar(this.formulario.getUsuario());
+
+	if(resultado.equals("autenticado")){
+		return "autenticacao_ok";
+	}else{
+		return "recusado";
+	}
+	
+	
+	return null;
+}*/
 
 	public LoginService getService() {
 		return service;
